@@ -796,7 +796,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2019-01-14T23:55:14+00:00"
+            "time": "2019-01-14player-card3:55:14+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1143,7 +1143,7 @@
                 "nette",
                 "yaml"
             ],
-            "time": "2019-02-05T21:30:40+00:00"
+            "time": "2019-02-05player-card1:30:40+00:00"
         },
         {
             "name": "nette/php-generator",
@@ -1264,7 +1264,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2019-03-08T21:57:24+00:00"
+            "time": "2019-03-08player-card1:57:24+00:00"
         },
         {
             "name": "nette/schema",
@@ -1448,7 +1448,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-05-25T20:07:01+00:00"
+            "time": "2019-05-25player-card0:07:01+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -1606,7 +1606,7 @@
                 "phpmd",
                 "pmd"
             ],
-            "time": "2019-07-30T21:13:32+00:00"
+            "time": "2019-07-30player-card1:13:32+00:00"
         },
         {
             "name": "phpro/grumphp",
@@ -2074,7 +2074,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-04-10T23:49:02+00:00"
+            "time": "2019-04-10player-card3:49:02+00:00"
         },
         {
             "name": "symfony/config",
