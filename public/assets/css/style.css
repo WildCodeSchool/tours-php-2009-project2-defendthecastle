@@ -3,7 +3,7 @@
 body {
     margin:0;
     padding:0;
-    background: url('/assets/images/terrain2.png') no-repeat center fixed; 
+    background: url('/assets/images/terrain.png') no-repeat center fixed; 
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -109,15 +109,6 @@ body {
     border-radius: 10px;
     padding: 10px;
 }
-
-@media screen and (min-width: 730px) {
-    body {
-        background: url('/assets/images/terrain2.png') no-repeat center fixed;
-        -webkit-background-size: cover;
-        background-size: cover;
-    }
-}
-
 
 @media screen and (min-width: 545px) {
     .player-card {
