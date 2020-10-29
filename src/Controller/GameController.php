@@ -15,11 +15,17 @@ class GameController extends AbstractController
 {
     private $troopManager;
 
+    public function index()
+    {
+        header("Location: game/play");
+    }
+    
     public function __construct()
     {
         parent::__construct();
         $this->troopManager = new TroopManager();
     }
+
 
     public function init(): string
     {
