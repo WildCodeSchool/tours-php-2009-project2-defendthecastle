@@ -43,30 +43,28 @@ class TroopManager extends AbstractManager
                 return (int)$this->pdo->lastInsertId();
             }
         }
-        return "";
+        return self::ERROR;
     }
 
     public function deleteAll()
     {
-        // prepared request to the database and verified if
+        // prepared request
         $truncate = $this->pdo->prepare("TRUNCATE " . self::TABLE);
         if (false == $truncate) {
             return self::ERROR;
         } else {
             $truncate->execute();
         }
-        return "";
+        return self::ERROR;
     }
 
-    /**
-     *  SQL query allowing to select the force in the troop table and to check if it can be executed.
-     */
-    public function selectTroop()
+    public function selectTroop(int $id)
     {
         $select = $this->pdo->prepare("SELECT strength FROM " . self::TABLE . " WHERE id=:id");
+        $select->bindValue('id', $id, PDO::PARAM_INT);
         if ($select->execute()) {
             return $select->fetch(PDO::FETCH_ASSOC);
         }
-        return "";
+        return $select;
     }
 }
