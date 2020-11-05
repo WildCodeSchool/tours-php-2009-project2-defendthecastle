@@ -64,8 +64,7 @@ class GameController extends AbstractController
          */
         foreach ($troops as $troop) {
             if (false === $this->troopManager->insert($troop)) {
-                header("HTTP/1.1 503 Service Unavailable");
-                echo '503 - Service Unavailable';
+                echo '404 - Page not found';
             }
         }
         header('Location: /game/play');
