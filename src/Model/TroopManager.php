@@ -33,10 +33,11 @@ class TroopManager extends AbstractManager
     public function insert(Troop $troop)
     {
         // prepared request
-        $insert = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name, strength) VALUES (:name, :strength)");
+        $insert = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name, strength, tiredness) VALUES (:name, :strength, :tiredness)");
         if ((false == $insert)
-            || (false == $insert->bindValue('name', $troop->getName(), PDO::PARAM_STR))
-            || (false == $insert->bindValue('strength', $troop->getLevel(), PDO::PARAM_INT))) {
+            || (false === $insert->bindValue('name', $troop->getName(), PDO::PARAM_STR))
+            || (false === $insert->bindValue('strength', $troop->getLevel(), PDO::PARAM_INT))
+            || (false === $insert->bindValue('tiredness', $troop->getTiredness(), PDO::PARAM_INT))) {
                 return self::ERROR;
         } else {
             if ($insert->execute()) {

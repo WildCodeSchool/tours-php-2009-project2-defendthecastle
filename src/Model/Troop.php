@@ -17,12 +17,19 @@ class Troop
     private $level;
 
     /**
+     * @var int
+     */
+    private $tiredness;
+
+    /**
      * @var string
      */
     private $name;
 
     const LEVEL_MIN = 20;
     const LEVEL_MAX = 100;
+    const TIREDNESS_MAX = 100; /* Defined a Tiredness Max on troupes */
+    const TIREDNESS_MIN = 0; /* Defined a Tiredness Min on troupes */
 
     public function setRandomLevel(): void
     {
@@ -41,5 +48,14 @@ class Troop
     public function getName():string
     {
         return $this->name;
+    }
+
+    public function setTiredness(): void
+    {
+        $this->tiredness = self::TIREDNESS_MAX;
+    }
+    public function getTiredness():int
+    {
+        return $this->tiredness;
     }
 }

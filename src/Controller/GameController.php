@@ -31,14 +31,17 @@ class GameController extends AbstractController
         $troops[0] = new Troop();
         $troops[0]->setName("Archer");
         $troops[0]->setRandomLevel();
+        $troops[0]->setTiredness();
         //-------------------------------------Horseman----------------------------------
         $troops[1] = new Troop();
         $troops[1]->setName("Horseman");
         $troops[1]->setRandomLevel();
+        $troops[1]->setTiredness();
         //-------------------------------------Lancer------------------------------------
         $troops[2] = new Troop();
         $troops[2]->setName("Lancer");
         $troops[2]->setRandomLevel();
+        $troops[2]->setTiredness();
         shuffle($troops);
 
 
