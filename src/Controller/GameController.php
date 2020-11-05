@@ -22,7 +22,6 @@ class GameController extends AbstractController
     {
         parent::__construct();
         $this->troopManager = new TroopManager();
-        //$this->troops[] = new Troop();
     }
 
     /**
