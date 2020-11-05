@@ -29,9 +29,10 @@ class TroopManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-   
+    
     public function insert(Troop $troop)
     {
+        
         // prepared request
         $insert = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (name, strength, tiredness) VALUES (:name, :strength, :tiredness)");
         if ((false == $insert)
