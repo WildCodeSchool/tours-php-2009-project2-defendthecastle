@@ -29,7 +29,6 @@ abstract class AbstractManager
      */
     protected $className;
 
-
     /**
      * Initializes Manager Abstract class.
      * @param string $table
@@ -64,7 +63,14 @@ abstract class AbstractManager
         $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-
         return $statement->fetch();
+    }
+
+    /**
+     * This method allows you to delete all data from a database.
+     */
+    public function truncate(): int
+    {
+        return $this->pdo->exec("TRUNCATE " . $this->table);
     }
 }
