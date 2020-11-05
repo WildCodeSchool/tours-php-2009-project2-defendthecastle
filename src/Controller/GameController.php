@@ -18,8 +18,6 @@ class GameController extends AbstractController
 {
     private $troopManager;
 
-    private $troops;
-
     public function __construct()
     {
         parent::__construct();
@@ -33,9 +31,9 @@ class GameController extends AbstractController
     public function init(): string // Assigning the value to a card
     {
         if (false === $this->troopManager->deleteAll()) {
-            header("HTTP/1.0 404 Not Found");
-            echo '404 - Page not found';
-            header('Location: /game/play');
+            header("HTTP/1.1 503 Service Unavailable");
+            echo '503 - Service Unavailable';
+            return "";
         }
 
         /**
@@ -66,9 +64,8 @@ class GameController extends AbstractController
          */
         foreach ($troops as $troop) {
             if (false === $this->troopManager->insert($troop)) {
-                header("HTTP/1.0 404 Not Found");
-                echo '404 - Page not found';
-                header('Location: /game/play');
+                header("HTTP/1.1 503 Service Unavailable");
+                echo '503 - Service Unavailable';
             }
         }
         header('Location: /game/play');
@@ -77,6 +74,7 @@ class GameController extends AbstractController
 
     /**
      *  Select troops by ID in the database.
+     * @param int $id
      */
     public function select(int $id)
     {
@@ -89,7 +87,7 @@ class GameController extends AbstractController
      */
     public function play()
     {
-        $this->troops = $this->troopManager->selectAll();
-        return $this->twig->render("Game/troop.html.twig", ["troops" => $this->troops]);
+        $troops = $this->troopManager->selectAll();
+        return $this->twig->render("Game/troop.html.twig", ["troops" => $troops]);
     }
 }
