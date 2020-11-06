@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: sylvain
@@ -6,6 +7,7 @@
  * Time: 20:52
  * PHP version 7
  */
+
 namespace App\Model;
 
 use App\Model\Connection;
@@ -66,5 +68,13 @@ abstract class AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    /**
+     * This method allows you to delete all data from a database.
+     */
+    public function truncate(): int
+    {
+        return $this->pdo->exec("TRUNCATE " . $this->table);
     }
 }

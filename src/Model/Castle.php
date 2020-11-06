@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by VisualStudioCode.
  * User: Thomas
@@ -7,7 +8,6 @@
  */
 
 namespace App\Model;
-
 
 class Castle
 {
@@ -21,7 +21,7 @@ class Castle
      */
     private $score;
 
-    public function setScore(): void
+    public function resetScore(): void
     {
         $this->score = 0;
     }
@@ -35,7 +35,7 @@ class Castle
     {
         $this->name = $name;
     }
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
