@@ -28,7 +28,6 @@ class GameController extends AbstractController
     /**
      * This method adds Managers classes to the constructor of the class inherited from the parent class.
      */
-
     public function __construct()
     {
         parent::__construct();
@@ -91,6 +90,7 @@ class GameController extends AbstractController
 
     /**
      * This method retrieves data from the defensive troops and the castle.
+     * She creates a random attacker with a random level.
      * It sends data necessary for the view.
      */
     public function play(): string
@@ -106,6 +106,7 @@ class GameController extends AbstractController
                 header("HTTP/1.1 503 Service Unavailable");
                 return $this->twig->render("Error/503.html.twig");
             }
+
             $enemy->setId($id);
         }
         $troops = $this->troopManager->selectAll();
