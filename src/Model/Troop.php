@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Max
@@ -7,7 +8,6 @@
  */
 
 namespace App\Model;
-
 
 class Troop
 {
@@ -28,18 +28,17 @@ class Troop
 
     private $id;
 
-    const NAMES = ['Archer', 'Horseman', 'Lancer'];
-
-    const LEVEL_MIN = 20;
-    const LEVEL_MAX = 100;
-    const TIREDNESS_MAX = 100; /* Defined a Tiredness Max on troupes */
-    const TIREDNESS_MIN = 0; /* Defined a Tiredness Min on troupes */
+    public const NAMES = ['Archer', 'Horseman', 'Lancer'];
+    public const LEVEL_MIN = 20;
+    public const LEVEL_MAX = 100;
+    public const TIREDNESS_MAX = 100; /* Defined a Tiredness Max on troupes */
+    public const TIREDNESS_MIN = 0; /* Defined a Tiredness Min on troupes */
 
     public function setId(int $id): void
     {
         $this->id = $id;
     }
-    
+
     public function getId(): int
     {
         return $this->id;
@@ -70,7 +69,7 @@ class Troop
         $this->name = self::NAMES[random_int(0, 2)];
     }
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -79,7 +78,7 @@ class Troop
     {
         $this->tiredness = self::TIREDNESS_MAX;
     }
-    public function getTiredness():int
+    public function getTiredness(): int
     {
         return $this->tiredness;
     }
