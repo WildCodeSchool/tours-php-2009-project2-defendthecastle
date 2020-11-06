@@ -53,7 +53,6 @@ class GameController extends AbstractController
             header("HTTP/1.1 503 Service Unavailable");
             return $this->twig->render("Error/503.html.twig");
         }
-
         $troops[0] = new Troop();
         $troops[0]->setName("Archer");
         $troops[0]->setRandomLevel();
@@ -71,7 +70,6 @@ class GameController extends AbstractController
                 return $this->twig->render("Error/503.html.twig");
             }
         }
-
         $this->castleManager->truncate();
         $castle = new Castle();
         $castle->resetScore();
@@ -107,6 +105,7 @@ class GameController extends AbstractController
                 header("HTTP/1.1 503 Service Unavailable");
                 return $this->twig->render("Error/503.html.twig");
             }
+
             $enemy->setId($id);
         }
         $troops = $this->troopManager->selectAll();
