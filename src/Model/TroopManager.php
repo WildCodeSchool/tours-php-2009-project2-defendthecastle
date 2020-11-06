@@ -41,7 +41,7 @@ class TroopManager extends AbstractManager
             false === $insert->bindValue('name', $troop->getName(), PDO::PARAM_STR) ||
             false === $insert->bindValue('strength', $troop->getLevel(), PDO::PARAM_INT) ||
             false === $insert->bindValue('tiredness', $troop->getTiredness(), PDO::PARAM_INT)
-            ){
+        ) {
                 return self::ERROR;
         } else {
             if ($insert->execute()) {
