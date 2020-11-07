@@ -74,7 +74,7 @@ class Troop
         return $this->name;
     }
 
-    public function setTiredness(): void
+    public function resetTiredness(): void
     {
         $this->tiredness = self::TIREDNESS_MAX;
     }
