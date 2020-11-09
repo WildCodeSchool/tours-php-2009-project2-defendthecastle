@@ -39,13 +39,13 @@ class GameController extends AbstractController
             echo '503 - Service Unavailable';
             return "";
         }
-      
+
         if (false === $this->enemyManager->deleteAttacker()) {
              header("HTTP/1.1 503 Service Unavailable");
              echo '503 - Service Unavailable';
              return "";
         }
-         
+
          /**
          *  Instantiates a Archer Object of the Troop class.
          */
@@ -54,14 +54,14 @@ class GameController extends AbstractController
         $troops[0] = new Troop();
         $troops[0]->setName("Archer");
         $troops[0]->setRandomLevel();
-        
+
         /**
          *  Instantiates a Horseman Object of the Troop class.
          */
         $troops[1] = new Troop();
         $troops[1]->setName("Horseman");
         $troops[1]->setRandomLevel();
-        
+
         /**
          *  Instantiates a Lancer Object of the Troop class.
          */
