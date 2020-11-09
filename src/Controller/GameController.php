@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Max
@@ -10,6 +11,7 @@ namespace App\Controller;
 
 use App\Model\Troop;
 use App\Model\TroopManager;
+use App\Model\EnemyManager;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -18,10 +20,13 @@ class GameController extends AbstractController
 {
     private $troopManager;
 
+    private $enemyManager;
+
     public function __construct()
     {
         parent::__construct();
         $this->troopManager = new TroopManager();
+        $this->enemyManager = new EnemyManager();
     }
 
     /**
@@ -34,10 +39,18 @@ class GameController extends AbstractController
             echo '503 - Service Unavailable';
             return "";
         }
-
-        /**
+      
+        if (false === $this->enemyManager->deleteAttacker()) {
+             header("HTTP/1.1 503 Service Unavailable");
+             echo '503 - Service Unavailable';
+             return "";
+        }
+         
+         /**
          *  Instantiates a Archer Object of the Troop class.
          */
+
+        //-------------------------------------Archer------------------------------------
         $troops[0] = new Troop();
         $troops[0]->setName("Archer");
         $troops[0]->setRandomLevel();
@@ -63,7 +76,9 @@ class GameController extends AbstractController
          */
         foreach ($troops as $troop) {
             if (false === $this->troopManager->insert($troop)) {
-                echo '404 - Page not found';
+                header("HTTP/1.1 503 Service Unavailable");
+                echo '503 - Service Unavailable';
+                return "";
             }
         }
         header('Location: /game/play');
@@ -85,7 +100,21 @@ class GameController extends AbstractController
      */
     public function play()
     {
-        $troops = $this->troopManager->selectAll();
-        return $this->twig->render("Game/troop.html.twig", ["troops" => $troops]);
+        $enemy = $this->enemyManager->selectCurrent();
+
+        if (null === $enemy) {
+            $enemy = new Troop();
+            $enemy->setRandomName();
+            $enemy->setRandomLevel();
+            $id = $this->enemyManager->insertEnemy($enemy);
+            if (EnemyManager::ERROR === $id) {
+                header("HTTP/1.1 503 Service Unavailable");
+                echo '503 - Service Unavailable';
+                return "";
+            }
+            $enemy->setId($id);
+        }
+            $troops = $this->troopManager->selectAll();
+            return $this->twig->render("Game/troop.html.twig", ["troops" => $troops, "enemy" => $enemy]);
     }
 }
