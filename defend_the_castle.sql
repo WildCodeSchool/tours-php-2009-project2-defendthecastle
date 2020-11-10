@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `castle`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `castle` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `score` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -48,10 +48,10 @@ DROP TABLE IF EXISTS `enemy`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `enemy` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `strength` int NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `strength` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 ​
 --
@@ -60,7 +60,6 @@ CREATE TABLE `enemy` (
 ​
 LOCK TABLES `enemy` WRITE;
 /*!40000 ALTER TABLE `enemy` DISABLE KEYS */;
-INSERT INTO `enemy` VALUES (1,'Horseman',27);
 /*!40000 ALTER TABLE `enemy` ENABLE KEYS */;
 UNLOCK TABLES;
 ​
@@ -73,11 +72,11 @@ DROP TABLE IF EXISTS `troop`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `troop` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `strength` int NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `strength` int DEFAULT NULL,
   `tiredness` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 ​
 --
@@ -86,7 +85,6 @@ CREATE TABLE `troop` (
 ​
 LOCK TABLES `troop` WRITE;
 /*!40000 ALTER TABLE `troop` DISABLE KEYS */;
-INSERT INTO `troop` VALUES (1,'Archer',72,NULL),(2,'Horseman',52,NULL),(3,'Lancer',38,NULL);
 /*!40000 ALTER TABLE `troop` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -99,4 +97,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 ​
--- Dump completed on 2020-11-10 10:47:08
+-- Dump completed on 2020-11-10 16:11:36
