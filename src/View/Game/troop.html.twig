@@ -47,27 +47,6 @@
         </div>
     {% endfor %}
     </div>
-    <div class="player">
-        {% for soldier in troops %}
-            <h3>{{ soldier.name }} = {{ soldier.strength }}</h3>
-        {% endfor %}
-        <h4>Sert uniquement à vérifier que la connexion à la bdd fonctionne correctement => A supprimer par la suite</h4>
-    </div>
-    <div class="container-card">
-        {% for troop in troops %}
-            <div class="player-card">
-                <a href="/game/select/{{ troop.id }}" name="{{ troop.name }}" class="img-card">
-                    <img src="/assets/images/{{ troop.name }}.png" class="img-card" alt="{{ troop.name }}" name="{{ troop.name }}">
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="player">
-        {% for soldier in troops %}
-            <h3>{{ soldier.name }} = {{ soldier.strength }}</h3>
-        {% endfor %}
-        <h4>Sert uniquement à vérifier que la connexion à la bdd fonctionne correctement => A supprimer par la suite</h4>
-    </div>
     <div class="container-card">
         {% for troop in troops %}
             <div class="player-card">
