@@ -45,7 +45,7 @@ class TroopManager extends AbstractManager
                 return (int)$this->pdo->lastInsertId();
             }
         }
-        return "";
+        return self::ERROR;
     }
 
     public function deleteAll()
@@ -57,6 +57,16 @@ class TroopManager extends AbstractManager
         } else {
             $truncate->execute();
         }
-        return "";
+        return self::ERROR;
+    }
+
+    public function selectTroop(int $id)
+    {
+        $select = $this->pdo->prepare("SELECT strength FROM " . self::TABLE . " WHERE id=:id");
+        $select->bindValue('id', $id, PDO::PARAM_INT);
+        if ($select->execute()) {
+            return $select->fetch(PDO::FETCH_ASSOC);
+        }
+        return $select;
     }
 }

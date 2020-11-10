@@ -11,6 +11,12 @@ namespace App\Controller;
 
 use App\Model\Troop;
 use App\Model\TroopManager;
+<<<<<<< HEAD
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
+=======
+>>>>>>> c88debe0e0df31878062db5d328667787c9e5412
 use App\Model\EnemyManager;
 use App\Model\Castle;
 use App\Model\CastleManager;
@@ -47,6 +53,7 @@ class GameController extends AbstractController
         if (false === $this->troopManager->deleteAll()) {
             header("HTTP/1.1 503 Service Unavailable");
             return $this->twig->render("Error/503.html.twig");
+<<<<<<< HEAD
         }
 
         if (false === $this->enemyManager->deleteAttacker()) {
@@ -54,6 +61,15 @@ class GameController extends AbstractController
             return $this->twig->render("Error/503.html.twig");
         }
 
+=======
+        }
+
+        if (false === $this->enemyManager->deleteAttacker()) {
+            header("HTTP/1.1 503 Service Unavailable");
+            return $this->twig->render("Error/503.html.twig");
+        }
+
+>>>>>>> c88debe0e0df31878062db5d328667787c9e5412
         $troops[0] = new Troop();
         $troops[0]->setName("Archer");
         $troops[0]->setRandomLevel();
@@ -90,12 +106,31 @@ class GameController extends AbstractController
     }
 
     /**
+<<<<<<< HEAD
+     *  Select troops by ID in the database.
+     * @param int $id
+     */
+    public function select(int $id)
+    {
+        $this->troopManager->selectOneById($id);
+        header('Location: /game/play');
+    }
+
+    /**
      * This method retrieves data from the defensive troops and the castle.
      * She creates a random attacker with a random level.
      * It sends data necessary for the view.
      */
     public function play(): string
     {
+=======
+     * This method retrieves data from the defensive troops and the castle.
+     * She creates a random attacker with a random level.
+     * It sends data necessary for the view.
+     */
+    public function play(): string
+    {
+>>>>>>> c88debe0e0df31878062db5d328667787c9e5412
         $enemy = $this->enemyManager->selectCurrent();
 
         if (null === $enemy) {
