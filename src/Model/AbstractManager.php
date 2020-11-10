@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: sylvain
@@ -6,6 +7,7 @@
  * Time: 20:52
  * PHP version 7
  */
+
 namespace App\Model;
 
 use App\Model\Connection;
@@ -28,7 +30,6 @@ abstract class AbstractManager
      * @var string
      */
     protected $className;
-
 
     /**
      * Initializes Manager Abstract class.
@@ -64,7 +65,14 @@ abstract class AbstractManager
         $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-
         return $statement->fetch();
+    }
+
+    /**
+     * This method allows you to delete all data from a database.
+     */
+    public function truncate(): int
+    {
+        return $this->pdo->exec("TRUNCATE " . $this->table);
     }
 }
