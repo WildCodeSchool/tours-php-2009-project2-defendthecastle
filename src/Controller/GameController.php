@@ -90,16 +90,6 @@ class GameController extends AbstractController
     }
 
     /**
-     *  Select troops by ID in the database.
-     * @param int $id
-     */
-    public function select(int $id)
-    {
-        $this->troopManager->selectOneById($id);
-        header('Location: /game/play');
-    }
-
-    /**
      * This method retrieves data from the defensive troops and the castle.
      * She creates a random attacker with a random level.
      * It sends data necessary for the view.
