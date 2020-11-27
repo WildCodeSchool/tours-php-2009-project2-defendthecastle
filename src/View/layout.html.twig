@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/fcg.css">
     <link rel="icon" href="/assets/images/castle-50.png">
     <!--CASTLE BACKGROUNDS-->
     {% if castleBackground == "error upload" or castleBackground == "error type file" %}
@@ -27,5 +28,7 @@
 <body>
     {% block content %}{% endblock %}
     {% block navbar %}{% include "_navbar.html.twig" %}{% endblock %}
+    {% block login %}{% endblock %}
+    {% block register %}{% endblock %}
 </body>
 </html>
